@@ -183,9 +183,10 @@ int _tmain(int argc, LPTSTR argv[])
     INTERNET_PER_CONN_OPTION_LIST options;
     if (_tcscmp(argv[1], _T("off")) == 0)
     {
-        initialize(&options, 1);
-
+        initialize(&options, 2);
         options.pOptions[0].Value.dwValue = PROXY_TYPE_AUTO_DETECT | PROXY_TYPE_DIRECT;
+        options.pOptions[1].Value.pszValue = _T("");
+        options.pOptions[1].dwOption = INTERNET_PER_CONN_PROXY_SERVER;
     }
     else if (_tcscmp(argv[1], _T("global")) == 0 && argc >= 3)
     {
